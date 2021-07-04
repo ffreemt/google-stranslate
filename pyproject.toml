@@ -12,6 +12,8 @@ include = ["LICENSE",]
 python = "^3.7"
 # python = "^3.6.7"
 logzero = "^1.7.0"
+httpx = "^0.18.2"
+joblib = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

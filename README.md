@@ -37,7 +37,7 @@ itrans("test this and that", to_lang="ja")  # 'これとそれをテストしま
 If you feel so inclined, you may use the async version of itranslate: atranslate:
 ```python
 import asyncio
-from itranslate import atranslate atrans
+from itranslate import atranslate as atrans
 
 texts = ["test this", test that"]
 coros = [atrans(elm) for elm in tests]

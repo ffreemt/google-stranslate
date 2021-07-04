@@ -3,13 +3,13 @@ from typing import Union
 
 import json
 from urllib.parse import quote
-import urllib3
+# import urllib3
 from datetime import datetime
 from joblib import Memory
 import httpx
 from logzero import logger
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+# urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 location = "./cachedir"
 memory = Memory(location, verbose=0)
 
@@ -82,7 +82,7 @@ def itranslate(
     '测试这一点'
     >>> itranslate('test this and that', to_lang="de")
     'Testen Sie das und das'
-    
+
     """
     # fmt: on
     text_ = text
