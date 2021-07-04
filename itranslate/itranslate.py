@@ -1,4 +1,4 @@
-"""Tranaslate via googlge translate."""
+"""Translate via googlge translate."""
 from typing import Union
 
 import json
