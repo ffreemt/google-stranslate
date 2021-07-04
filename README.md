@@ -13,6 +13,10 @@ pip install itranslate
 # poetry add itranslate
 # poetry add git+https://github.com/ffreemt/google-itranslate
 
+# to upgrade:
+pip install itranslate -U
+
+# or poetry add itranslate@latest
 ```
 
 ## Use it
@@ -33,7 +37,7 @@ itrans("test this and that", to_lang="de")  # 'Testen Sie das und das'
 itrans("test this and that", to_lang="ja")  # 'これとそれをテストします'
 ```
 
-### Not ready yet -- `async version`: `atranslate`
+### `async version`: `atranslate`
 If you feel so inclined, you may use the async version of itranslate: atranslate:
 ```python
 import asyncio
