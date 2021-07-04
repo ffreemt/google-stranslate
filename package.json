@@ -1,6 +1,6 @@
 {
     "name": "google-itranslate",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "description",
     "main": "index.js",
     "repository": "git@github.com:ffreemt/google-itranslate.git",
