@@ -129,6 +129,7 @@ def itranslate(
     # logger.debug("url: %s", f"{url}/_/TranslateWebserverUi/data/batchexecute")
     try:
         resp = client.post(f"{url}/_/TranslateWebserverUi/data/batchexecute", data=_, timeout=timeout)
+        resp.raise_for_status()
     except Exception as e:
         logger.error(e)
         raise

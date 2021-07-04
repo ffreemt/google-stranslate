@@ -33,21 +33,21 @@ itrans("test this and that", to_lang="de")  # 'Testen Sie das und das'
 itrans("test this and that", to_lang="ja")  # 'これとそれをテストします'
 ```
 
-### Not ready yet: `async version`: `atranslate`
+### Not ready yet -- `async version`: `atranslate`
 If you feel so inclined, you may use the async version of itranslate: atranslate:
 ```python
 import asyncio
 from itranslate import atranslate as atrans
 
-texts = ["test this", test that"]
-coros = [atrans(elm) for elm in tests]
+texts = ["test this", "test that"]
+coros = [atrans(elm) for elm in texts]
 
 loop = asyncio.get_event_loop()
 
-trtexts = loop.run_until_complete(asycnio.gather(*coros))
+trtexts = loop.run_until_complete(asyncio.gather(*coros))
 
 print(trtexts)
-#
+# ['测试这一点', '测试']
 ```
 
 ### Proxies support

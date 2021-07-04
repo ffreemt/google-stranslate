@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "google-itranslate"
+name = "itranslate"
 version = "0.1.0"
-description = " "
+description = "Google translate free and unlimited, itranslate since gtranslate is taken"
 authors = ["ffreemt"]
 license = "MIT"
 readme = "README.md"
