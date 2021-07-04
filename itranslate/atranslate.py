@@ -30,10 +30,11 @@ async def atranslate(
     Returns:
         translated text: string
 
+    >>> import asyncio
     >>> loop = asyncio.get_event_loop()
-    >>> loop.run_until_complte(atranslate('test this and that'))
+    >>> loop.run_until_complete(atranslate('test this and that'))
     '测试这一点'
-    >>> loop.run_until_complte(atranslate('test this and that', to_lang="de"))
+    >>> loop.run_until_complete(atranslate('test this and that', to_lang="de"))
     'Testen Sie das und das'
     """
     # fmt: on

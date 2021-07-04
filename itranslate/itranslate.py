@@ -3,6 +3,7 @@ from typing import Union
 
 import json
 from urllib.parse import quote
+
 # import urllib3
 from datetime import datetime
 from joblib import Memory
