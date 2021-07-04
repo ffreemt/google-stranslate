@@ -1,0 +1,41 @@
+cdto pypi
+
+cookiecut cookiecutter-pypi-project
+cd repo-name
+poetry install
+yarn
+
+check cookiecutter.
+rg --pcre2 "(?<!\.)(:?repo_name|pack_name|mod_name|func_name)" --hidden
+
+git init
+poetry37 add logzero
+poetry37 add pylint flake8 tbump ipython pep257 --dev
+
+yarn init
+or pnpm init
+or npm init
+
+yarn add npm-run-all  # run-s
+
+tbump init 0.1.0
+REM tbump init --pyproject 0.1.0
+  [[files]]
+  src = "*/__init__.py"
+  [[files]]
+  src = "package.json"
+  [[files]]
+  src = "tests/_test_*.py"
+
+edit package.json
+  "scritpts": {
+  "start": "pyright && pytest tests && yarn style"
+  }
+
+poetry version patch  # Bumped to 0.1.x
+git ac "Bump version"
+tbump 0.1.x
+
+poetry publish --build
+REM or
+poetry build && poetry publish
