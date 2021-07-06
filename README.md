@@ -83,7 +83,7 @@ proxies = {
 itrans("test this and that\n another test", proxies=proxies)
 ```
 
-Check [https://www.python-httpx.org/advanced/](https://www.python-httpx.org/advanced/) for other ways of setting up proxies.
+`itranslate` uses ``httpx`` to fetch contents and inherits ``httpx``'s proxy mechanism. Check [https://www.python-httpx.org/advanced/](https://www.python-httpx.org/advanced/) for other ways of setting up proxies.
 
 ## Disclaimer
 ``itranslate`` makes use of a translate interface floating around the net and is for study and research purpose only. The interface may become invalid without notice, which will render ``itranslate`` completely useless.
