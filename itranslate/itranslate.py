@@ -2,10 +2,7 @@
 from typing import Union
 
 import json
-from urllib.parse import (
-    quote,
-    urlencode,
-)
+# from urllib.parse import (quote, urlencode,)
 
 # import urllib3
 from datetime import datetime
@@ -129,33 +126,24 @@ def itranslate(
     )
 
     # better use json.dumps(_, separators=(',', ":")) than str(_)
-    def dumps(x):
-        return json.dumps(x, separators=(',', ":"))
+    # no need, just use default json.dumps
+    # def dumps(x): return json.dumps(x, separators=(',', ":"))
 
     # [None] or [1] both work
     _ = [[text, from_lang, to_lang, True], [None]]
-    _ = [[["MkEWBc", dumps(_), None, "generic"]]]
-    data = {"f.req": _}
-    _ = f"f.req={quote(dumps(_))}"
+    _ = [[["MkEWBc", json.dumps(_), None, "generic"]]]
+    data = {"f.req": json.dumps(_)}
+
+    # data = {"f.req": rf"""[[["MkEWBc","[[\"{text}\",\"{from_lang}\",\"{to_lang}\",true],[null]]",null,"generic"]]]"""}
+    # _ = f"f.req={quote(dumps(_))}"
 
     # logger.debug("url: %s", f"{url}/_/TranslateWebserverUi/data/batchexecute")
     try:
         # resp = client.post(url_, data=_, timeout=timeout)
 
-        # need to set params
-        _ = """  # why doesnt work?
-        params = {
-            'rpcids': "MkEWBc",
-            'bl': 'boq_translate-webserver_20201207.13_p0',
-            'soc-app': 1,
-            'soc-platform': 1,
-            'soc-device': 1,
-            'rt': 'c',
-        }
-        resp = client.post(url_, data=data, params=params, timeout=timeout)
-        # """
+        resp = client.post(url_, data=data, timeout=timeout)
 
-        resp = client.post(url_, data=urlencode(data), timeout=timeout)
+        # resp = client.post(url_, data=urlencode(data), timeout=timeout)
         resp.raise_for_status()
     except Exception as e:
         logger.error(e)
