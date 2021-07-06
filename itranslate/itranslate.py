@@ -91,8 +91,8 @@ def itranslate(
     # fmt: on
     text_ = text
     text = str(text)
-    if not text:
-        return ""
+    if not text.strip():
+        return text
 
     if len(text) > 5000:
         logger.warning(" text (%s) too longer, trimmed to 5000", len(text))
@@ -130,7 +130,7 @@ def itranslate(
 
     # better use json.dumps(_, separators=(',', ":")) than str(_)
     def dumps(x):
-        return json.dumps(_, separators=(',', ":"))
+        return json.dumps(x, separators=(',', ":"))
 
     # [None] or [1] both work
     _ = [[text, from_lang, to_lang, True], [None]]
