@@ -70,4 +70,4 @@ itrans("test this and that\n another test", proxies=proxies)
 Check [https://www.python-httpx.org/advanced/](https://www.python-httpx.org/advanced/) for other ways of setting up proxies.
 
 ## Disclaimer
-``itranslate`` is for study and research purpose only. The interface used by ``itranslate`` may become invalid without notice and render ``itranslate`` completely useless.
+``itranslate`` takes advantage of a google translate interface floating around the net and is for study and research purpose only. The interface may become invalid without notice, which will render ``itranslate`` completely useless.
