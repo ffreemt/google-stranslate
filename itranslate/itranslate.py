@@ -2,7 +2,10 @@
 from typing import Union
 
 import json
-from urllib.parse import quote
+from urllib.parse import (
+    quote,
+    urlencode,
+)
 
 # import urllib3
 from datetime import datetime
@@ -16,18 +19,19 @@ memory = Memory(location, verbose=0)
 
 
 @memory.cache
-def get_client(proxies: Union[str, dict] = None, verify: bool = False) -> httpx.Client:
+def get_client(proxies: Union[str, dict] = None, verify: bool = False, headers: dict = None) -> httpx.Client:
     """Gen and cache a httpx.Client.
 
     Args:
         proxies: setup and persistant
     """
     # url = "https://translate.google.cn"
-    headers = {
-        # 'Referer': 'http://translate.google.cn/',
-        # 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-    }
+    if headers is None:
+        headers = {
+            # 'Referer': 'http://translate.google.cn/',
+            # 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36',
+            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
+        }
 
     if proxies is None:
         client = httpx.Client(verify=verify, headers=headers)
@@ -73,8 +77,8 @@ def itranslate(
         from_lang:, "auto" (default), "zh", "en" etc
         from_lang:, "zh" (default), "en" etc
         proxies: "http://...", {"http": "http:...", "https": "https://..."}
-        timeout: default 5 sec, use a larger value for slow net.
-            More granular timeouts can be set. refer to https://www.python-httpx.org/advanced/#timeout-configuration
+        timeout: default 10 sec, use a larger value for slow net.
+            More granular timeouts can be set, refer to https://www.python-httpx.org/advanced/#timeout-configuration
         url: which site to use, default https://translate.google.cn
     Returns:
         translated text: string
@@ -83,7 +87,6 @@ def itranslate(
     '测试这一点'
     >>> itranslate('test this and that', to_lang="de")
     'Testen Sie das und das'
-
     """
     # fmt: on
     text_ = text
@@ -118,18 +121,41 @@ def itranslate(
     if url is None:
         url = "https://translate.google.cn"
 
+    url_ = f"{url}/_/TranslateWebserverUi/data/batchexecute"
     client = get_client(
         proxies=proxies,
         verify=verify,
+        # headers={}  # no headers if params is set
     )
 
-    _ = [[text, from_lang, to_lang, True], [1]]
-    _ = [[["MkEWBc", str(_), None, "generic"]]]
-    _ = f"f.req={quote(str(_))}"
+    # better use json.dumps(_, separators=(',', ":")) than str(_)
+    def dumps(x):
+        return json.dumps(_, separators=(',', ":"))
+
+    # [None] or [1] both work
+    _ = [[text, from_lang, to_lang, True], [None]]
+    _ = [[["MkEWBc", dumps(_), None, "generic"]]]
+    data = {"f.req": _}
+    _ = f"f.req={quote(dumps(_))}"
 
     # logger.debug("url: %s", f"{url}/_/TranslateWebserverUi/data/batchexecute")
     try:
-        resp = client.post(f"{url}/_/TranslateWebserverUi/data/batchexecute", data=_, timeout=timeout)
+        # resp = client.post(url_, data=_, timeout=timeout)
+
+        # need to set params
+        _ = """  # why doesnt work?
+        params = {
+            'rpcids': "MkEWBc",
+            'bl': 'boq_translate-webserver_20201207.13_p0',
+            'soc-app': 1,
+            'soc-platform': 1,
+            'soc-device': 1,
+            'rt': 'c',
+        }
+        resp = client.post(url_, data=data, params=params, timeout=timeout)
+        # """
+
+        resp = client.post(url_, data=urlencode(data), timeout=timeout)
         resp.raise_for_status()
     except Exception as e:
         logger.error(e)
