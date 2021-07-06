@@ -30,11 +30,27 @@ from itranslate import itranslate as itrans
 
 itrans("test this and that")  # '测试这一点'
 
-# new lines are preserved
-itrans("test this \n\nand that")  # '测试这一点\n\n然后'
+# new lines are preserved, tabs are not
+itrans("test this \n\nand test that \t and so on")
+# '测试这一点\n\n并测试这一点等等'
 
 itrans("test this and that", to_lang="de")  # 'Testen Sie das und das'
 itrans("test this and that", to_lang="ja")  # 'これとそれをテストします'
+```
+
+Text longer than 5000 characters will be trimmed to 5000. Hence for a long document, you may try something like the following or similar.
+```python
+from textwrap import wrap
+from itranslate import itranslate as itrans
+
+long_doc = """ long long text formatted with \n and so on"""
+tr_doc = " ".join([itrans(elm) for elm in wrap(long_doc,
+    width=5000,
+    break_long_words=False,
+    break_on_hyphens=False,
+    drop_whitespace=False,
+    replace_whitespace=False,
+)])
 ```
 
 ### `async version`: `atranslate`
@@ -54,15 +70,15 @@ print(trtexts)
 # ['测试这一点', '测试']
 ```
 
-### Proxies support
+### Proxy support
 ```
 itrans("test this and that", proxies="http://localhost:8030")
 ```
 or
 ```python
 proxies = {
-    "http://": "http://localhost:8030",
-    "https://": "http://localhost:8031",
+    "http": "http://localhost:8030",
+    "https": "http://localhost:8031",
 }
 itrans("test this and that\n another test", proxies=proxies)
 ```
@@ -70,4 +86,4 @@ itrans("test this and that\n another test", proxies=proxies)
 Check [https://www.python-httpx.org/advanced/](https://www.python-httpx.org/advanced/) for other ways of setting up proxies.
 
 ## Disclaimer
-``itranslate`` takes advantage of a google translate interface floating around the net and is for study and research purpose only. The interface may become invalid without notice, which will render ``itranslate`` completely useless.
+``itranslate`` makes use of a translate interface floating around the net and is for study and research purpose only. The interface may become invalid without notice, which will render ``itranslate`` completely useless.
