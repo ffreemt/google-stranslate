@@ -85,5 +85,12 @@ itrans("test this and that\n another test", proxies=proxies)
 
 `itranslate` uses ``httpx`` to fetch contents and inherits ``httpx``'s proxy mechanism. Check [https://www.python-httpx.org/advanced/](https://www.python-httpx.org/advanced/) for other ways of setting up proxies.
 
+## Other google translate related repos
+Much more sophisticated than `itranslate`
+*   [https://github.com/ssut/py-googletrans](https://img.shields.io/github/stars/ssut/py-googletrans)[![https://github.com/ssut/py-googletrans](https://img.shields.io/github/stars/ssut/py-googletrans)](https://github.com/ssut/py-googletrans)
+
+*   [https://github.com/lushan88a/google_trans_new](https://github.com/lushan88a/google_trans_new)[![https://github.com/lushan88a/google_trans_new](https://img.shields.io/github/stars/lushan88a/google_trans_new)](https://github.com/lushan88a/google_trans_new)
+*   [https://github.com/Animenosekai/translate](https://github.com/Animenosekai/translate)[![https://github.com/Animenosekai/translate](https://img.shields.io/github/stars/Animenosekai/translate)](https://github.com/Animenosekai/translate)
+
 ## Disclaimer
 ``itranslate`` makes use of a translate interface floating around the net and is for study and research purpose only. The interface may become invalid without notice, which will render ``itranslate`` completely useless.
