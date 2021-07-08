@@ -93,4 +93,4 @@ Much more sophisticated than `itranslate`
 *   [https://github.com/Animenosekai/translate](https://github.com/Animenosekai/translate)[![https://github.com/Animenosekai/translate](https://img.shields.io/github/stars/Animenosekai/translate)](https://github.com/Animenosekai/translate)
 
 ## Disclaimer
-``itranslate`` makes use of a translate interface floating around the net and is for study and research purpose only. The interface may become invalid without notice, which will render ``itranslate`` completely useless.
+``itranslate`` makes use of a translate interface floating around the net and is for study and research purpose only. The interface may become invalid without notice, which would render ``itranslate`` completely useless.

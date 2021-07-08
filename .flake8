@@ -16,4 +16,4 @@ exclude =
   dist,
   .venv
   pad*.py
-max-complexity = 25
+max-complexity = 26

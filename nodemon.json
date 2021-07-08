@@ -15,7 +15,7 @@
     "test/samples/"
   ],
   "env": {
-    "NODE_ENV": "development"
+    "NODE_ENV":  "development"
   },
   "ext": "js json py"
 }
