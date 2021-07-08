@@ -5,5 +5,5 @@
   "reportMissingImports": true,
   "reportMissingTypeStubs": false,
   "pythonVersion": "3.7",
-  "ignore": []
+  "ignore": [] 
 }
