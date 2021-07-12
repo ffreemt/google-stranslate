@@ -88,7 +88,7 @@ itrans("test this and that\n another test", proxies=proxies)
 ## Other google translate related repos
 Much more sophisticated than `itranslate`
 *   [https://github.com/ssut/py-googletrans](https://github.com/ssut/py-googletrans) [![](https://img.shields.io/github/stars/ssut/py-googletrans)](https://github.com/ssut/py-googletrans)
-*   [https://github.com/nidhaloff/deep-translator](https://img.shields.io/github/stars/nidhaloff/deep-translator) [![https://github.com/nidhaloff/deep-translator](https://img.shields.io/github/stars/nidhaloff/deep-translator)](https://github.com/nidhaloff/deep-translator)
+*   [https://github.com/nidhaloff/deep-translator](https://github.com/nidhaloff/deep-translator) [![](https://img.shields.io/github/stars/nidhaloff/deep-translator)](https://github.com/nidhaloff/deep-translator)
 
 *   [https://github.com/lushan88a/google_trans_new](https://github.com/lushan88a/google_trans_new) [![https://github.com/lushan88a/google_trans_new](https://img.shields.io/github/stars/lushan88a/google_trans_new)](https://github.com/lushan88a/google_trans_new)
 *   [https://github.com/Animenosekai/translate](https://github.com/Animenosekai/translate) [![https://github.com/Animenosekai/translate](https://img.shields.io/github/stars/Animenosekai/translate)](https://github.com/Animenosekai/translate)
