@@ -1,7 +1,7 @@
-# itranslate
+# stranslate
 [![tests](https://github.com/ffreemt/google-itranslate/actions/workflows/routine-tests.yml/badge.svg)](https://github.com/ffreemt/google-itranslate/actions)[![python](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![PyPI version](https://badge.fury.io/py/itranslate.svg)](https://badge.fury.io/py/itranslate)
 
-Google translate free and unlimited access, `itranslate` because gtranslate is taken
+Google translate free and unlimited access, `stranslate` because gtranslate is taken
 
 ## Install it
 
@@ -54,7 +54,7 @@ tr_doc = " ".join([itrans(elm) for elm in wrap(long_doc,
 ```
 
 ### `async version`: `atranslate`
-If you feel so inclined, you may use the async version of itranslate: atranslate:
+If you feel so inclined, you may use the async version of itranslate ``atranslate``:
 ```python
 import asyncio
 from itranslate import atranslate as atrans
@@ -90,6 +90,7 @@ Much more sophisticated than `itranslate`
 *   [https://github.com/ssut/py-googletrans](https://github.com/ssut/py-googletrans) [![](https://img.shields.io/github/stars/ssut/py-googletrans)](https://github.com/ssut/py-googletrans)
 *   [https://github.com/nidhaloff/deep-translator](https://github.com/nidhaloff/deep-translator) [![](https://img.shields.io/github/stars/nidhaloff/deep-translator)](https://github.com/nidhaloff/deep-translator)
 
+*   [https://github.com/mouuff/mtranslate](https://github.com/mouuff/mtranslate) [![](https://img.shields.io/github/stars/mouuff/mtranslate)](https://github.com/mouuff/mtranslate)
 *   [https://github.com/lushan88a/google_trans_new](https://github.com/lushan88a/google_trans_new) [![https://github.com/lushan88a/google_trans_new](https://img.shields.io/github/stars/lushan88a/google_trans_new)](https://github.com/lushan88a/google_trans_new)
 *   [https://github.com/Animenosekai/translate](https://github.com/Animenosekai/translate) [![https://github.com/Animenosekai/translate](https://img.shields.io/github/stars/Animenosekai/translate)](https://github.com/Animenosekai/translate)
 
