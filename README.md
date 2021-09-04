@@ -1,5 +1,5 @@
 # stranslate
-[![tests](https://github.com/ffreemt/google-itranslate/actions/workflows/routine-tests.yml/badge.svg)](https://github.com/ffreemt/google-itranslate/actions)[![python](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![PyPI version](https://badge.fury.io/py/itranslate.svg)](https://badge.fury.io/py/itranslate)
+[![tests](https://github.com/ffreemt/google-stranslate/actions/workflows/routine-tests.yml/badge.svg)](https://github.com/ffreemt/google-stranslate/actions)[![python](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![PyPI version](https://badge.fury.io/py/itranslate.svg)](https://badge.fury.io/py/itranslate)
 
 Google translate free and unlimited access, `stranslate` because gtranslate is taken
 
@@ -95,4 +95,4 @@ Much more sophisticated than `itranslate`
 *   [https://github.com/Animenosekai/translate](https://github.com/Animenosekai/translate) [![https://github.com/Animenosekai/translate](https://img.shields.io/github/stars/Animenosekai/translate)](https://github.com/Animenosekai/translate)
 
 ## Disclaimer
-``itranslate`` makes use of a translate interface floating around the net and is for study and research purpose only. The interface may become invalid without notice, which would render ``itranslate`` completely useless.
+``google-stranslate`` makes use of a translate interface floating around the net and is for study and research purpose only. The interface may become invalid without notice, which would of course render the package totally unusable.
