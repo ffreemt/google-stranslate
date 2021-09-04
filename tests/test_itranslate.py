@@ -11,6 +11,6 @@ def test_version():
 def test_sanity():
     """Sanity check."""
     try:
-        assert not itranslate()
+        assert not itranslate("test")
     except Exception:
         assert True

@@ -77,9 +77,14 @@ async def atranslate(
     )
     # """
 
-    _ = [[text, from_lang, to_lang, True], [1]]
-    _ = [[["MkEWBc", str(_), None, "generic"]]]
-    _ = f"f.req={quote(str(_))}"
+    # _ = [[text, from_lang, to_lang, True], [1]]
+    # _ = [[["MkEWBc", str(_), None, "generic"]]]
+    # _ = f"f.req={quote(str(_))}"
+
+    # [None] or [1] both work
+    _ = [[text, from_lang, to_lang, True], [None]]
+    _ = [[["MkEWBc", json.dumps(_), None, "generic"]]]
+    data = {"f.req": json.dumps(_)}
 
     # logger.debug("url: %s", f"{url}/_/TranslateWebserverUi/data/batchexecute")
     async with httpx.AsyncClient(
@@ -88,7 +93,8 @@ async def atranslate(
         headers={"Content-Type": "application/x-www-form-urlencoded;charset=utf-8"}
     ) as client:
         try:
-            resp = await client.post(f"{url}/_/TranslateWebserverUi/data/batchexecute", data=_, timeout=timeout)
+            # resp = await client.post(f"{url}/_/TranslateWebserverUi/data/batchexecute", data=_, timeout=timeout)
+            resp = await client.post(f"{url}/_/TranslateWebserverUi/data/batchexecute", data=data, timeout=timeout)
             resp.raise_for_status()
         except Exception as e:
             logger.error(e)

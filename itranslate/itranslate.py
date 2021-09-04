@@ -1,7 +1,30 @@
-"""Translate via googlge translate."""
+"""Translate via googlge translate.
+
+For manual testing:
 from typing import Union
 
 import json
+# from urllib.parse import (quote, urlencode,)
+
+# import urllib3
+from datetime import datetime
+from joblib import Memory
+import httpx
+
+text: str = 'organic'
+from_lang: str = "en"
+to_lang: str = "zh"
+proxies: Union[str, dict] = None
+timeout: Union[float, httpx.Timeout] = 10
+verify: bool = False
+url: str = None
+
+
+"""
+from typing import Union
+
+import json
+
 # from urllib.parse import (quote, urlencode,)
 
 # import urllib3
@@ -16,7 +39,9 @@ memory = Memory(location, verbose=0)
 
 
 @memory.cache
-def get_client(proxies: Union[str, dict] = None, verify: bool = False, headers: dict = None) -> httpx.Client:
+def get_client(
+    proxies: Union[str, dict] = None, verify: bool = False, headers: dict = None
+) -> httpx.Client:
     """Gen and cache a httpx.Client.
 
     Args:
@@ -92,7 +117,7 @@ def itranslate(
         return text
 
     if len(text) > 5000:
-        logger.warning(" text (%s) too longer, trimmed to 5000", len(text))
+        logger.warning(" text (%s) too long, trimmed to 5000", len(text))
         text = text[:5000]
 
     try:
@@ -162,7 +187,19 @@ def itranslate(
     if to_lang in ['zh']:
         trtext = "".join([elm[0] for elm in _[1][0][0][5]])
     else:
-        trtext = " ".join([elm[0] for elm in _[1][0][0][5]])
+        try:
+            trtext = " ".join([elm[0] for elm in _[1][0][0][-1]])
+        except TypeError:  # try
+            try:
+                trtext = _[1][0][-1][0]
+            except Exception as e:
+                logger.error(e)
+                # trtext = str(e)
+                raise
+        except Exception as e:
+            logger.error(e)
+            raise
+
     # ic(trtext)
 
     return trtext
