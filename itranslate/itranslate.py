@@ -1,13 +1,12 @@
 """Translate via googlge translate.
 
   if url is None:
-        url = "https://translate.google.cn"
+        url = "https://translate.google.cn"  # => https://translate.google.com.hk
 
   url_ = f"{url}/_/TranslateWebserverUi/data/batchexecute"
   seems no longer work
 
 https://github.com/ssut/py-googletrans/issues/268
-
 
 For manual testing:
 from typing import Union
@@ -115,7 +114,7 @@ def itranslate(
         translated text: string
 
     >>> itranslate('test this and that')
-    '测试这一点'
+    '测试这个'
     >>> itranslate('test this and that', to_lang="de")
     'Testen Sie das und das'
     """
