@@ -1,5 +1,14 @@
 """Translate via googlge translate.
 
+  if url is None:
+        url = "https://translate.google.cn"
+
+  url_ = f"{url}/_/TranslateWebserverUi/data/batchexecute"
+  seems no longer work
+
+https://github.com/ssut/py-googletrans/issues/268
+
+
 For manual testing:
 from typing import Union
 
@@ -141,9 +150,12 @@ def itranslate(
         return text_
 
     if url is None:
-        url = "https://translate.google.cn"
+        url = "https://translate.google.com.hk"
 
     url_ = f"{url}/_/TranslateWebserverUi/data/batchexecute"
+
+    # url_ = "https://translate.google.com/_/TranslateWebserverUi/data/batchexecute"
+    
     client = get_client(
         proxies=proxies,
         verify=verify,
@@ -157,7 +169,9 @@ def itranslate(
     # [None] or [1] both work
     _ = [[text, from_lang, to_lang, True], [None]]
     _ = [[["MkEWBc", json.dumps(_), None, "generic"]]]
+
     data = {"f.req": json.dumps(_)}
+    # data = {"rpcids": json.dumps(_)}
 
     # data = {"f.req": rf"""[[["MkEWBc","[[\"{text}\",\"{from_lang}\",\"{to_lang}\",true],[null]]",null,"generic"]]]"""}
     # _ = f"f.req={quote(dumps(_))}"
