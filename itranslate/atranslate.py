@@ -68,7 +68,7 @@ async def atranslate(
         return text_
 
     if url is None:
-        url = "https://translate.google.cn"
+        url = "https://translate.google.com.hk"
 
     _ = """
     client = get_client(
