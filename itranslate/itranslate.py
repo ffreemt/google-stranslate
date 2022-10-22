@@ -99,6 +99,7 @@ def itranslate(
         timeout: Union[float, httpx.Timeout] = 10,
         verify: bool = False,
         url: str = None,
+        cf: bool = False,  # for people who cant access google, set this to True
 ) -> str:
     r"""Tranaslate via googlge translate.
 
@@ -165,27 +166,36 @@ def itranslate(
     # no need, just use default json.dumps
     # def dumps(x): return json.dumps(x, separators=(',', ":"))
 
-    # [None] or [1] both work
-    _ = [[text, from_lang, to_lang, True], [None]]
-    _ = [[["MkEWBc", json.dumps(_), None, "generic"]]]
+    if cf:
+        data = {"text": text, "from_lang": from_lang, "to_lang": to_lang}
+        try:
+            resp = client.post("https://gtr.ttw.workers.dev", json=data, timeout=timeout)
+            resp.raise_for_status()
+        except Exception as e:
+            logger.error(e)
+            raise        
+    else:
+        # [None] or [1] both work
+        _ = [[text, from_lang, to_lang, True], [None]]
+        _ = [[["MkEWBc", json.dumps(_), None, "generic"]]]
 
-    data = {"f.req": json.dumps(_)}
-    # data = {"rpcids": json.dumps(_)}
+        data = {"f.req": json.dumps(_)}
+        # data = {"rpcids": json.dumps(_)}
 
-    # data = {"f.req": rf"""[[["MkEWBc","[[\"{text}\",\"{from_lang}\",\"{to_lang}\",true],[null]]",null,"generic"]]]"""}
-    # _ = f"f.req={quote(dumps(_))}"
+        # data = {"f.req": rf"""[[["MkEWBc","[[\"{text}\",\"{from_lang}\",\"{to_lang}\",true],[null]]",null,"generic"]]]"""}
+        # _ = f"f.req={quote(dumps(_))}"
 
-    # logger.debug("url: %s", f"{url}/_/TranslateWebserverUi/data/batchexecute")
-    try:
-        # resp = client.post(url_, data=_, timeout=timeout)
+        # logger.debug("url: %s", f"{url}/_/TranslateWebserverUi/data/batchexecute")
+        try:
+            # resp = client.post(url_, data=_, timeout=timeout)
 
-        resp = client.post(url_, data=data, timeout=timeout)
+            resp = client.post(url_, data=data, timeout=timeout)
 
-        # resp = client.post(url_, data=urlencode(data), timeout=timeout)
-        resp.raise_for_status()
-    except Exception as e:
-        logger.error(e)
-        raise
+            # resp = client.post(url_, data=urlencode(data), timeout=timeout)
+            resp.raise_for_status()
+        except Exception as e:
+            logger.error(e)
+            raise
     try:
         jdata = json.loads(resp.text.splitlines()[2])
     except Exception as e:

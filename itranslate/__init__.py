@@ -1,5 +1,5 @@
 """Init."""
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 from .itranslate import itranslate
 from .atranslate import atranslate
 

@@ -37,6 +37,10 @@ itrans("test this \n\nand test that \t and so on")
 itrans("test this and that", to_lang="de")  # 'Testen Sie das und das'
 itrans("test this and that", to_lang="ja")  # 'これとそれをテストします'
 ```
+For those who cannot access google translate, a temporary solution has been implemented. Set `cf` (it stands for cloudflare) to True, e.g.,
+```
+itrans("test this and that", to_lang="de", cf=True) 
+```
 
 Text longer than 5000 characters will be trimmed to 5000. Hence for a long document, you may try something like the following or similar.
 ```python

@@ -16,6 +16,7 @@ async def atranslate(
         timeout: Union[float, httpx.Timeout] = 10,
         verify: bool = False,
         url: str = None,
+        cf: bool = False,  # for people who cant access google, set this to True
 ) -> str:
     r"""Tranaslate via googlge translate, async version.
 
@@ -92,13 +93,21 @@ async def atranslate(
         verify=verify,
         headers={"Content-Type": "application/x-www-form-urlencoded;charset=utf-8"}
     ) as client:
-        try:
-            # resp = await client.post(f"{url}/_/TranslateWebserverUi/data/batchexecute", data=_, timeout=timeout)
-            resp = await client.post(f"{url}/_/TranslateWebserverUi/data/batchexecute", data=data, timeout=timeout)
-            resp.raise_for_status()
-        except Exception as e:
-            logger.error(e)
-            raise
+        if cf:
+            try:
+                resp = await client.post("https://gtr.ttw.workers.dev", json=data, timeout=timeout)
+                resp.raise_for_status()
+            except Exception as e:
+                logger.error(e)
+                raise   
+        else:
+            try:
+                # resp = await client.post(f"{url}/_/TranslateWebserverUi/data/batchexecute", data=_, timeout=timeout)
+                resp = await client.post(f"{url}/_/TranslateWebserverUi/data/batchexecute", data=data, timeout=timeout)
+                resp.raise_for_status()
+            except Exception as e:
+                logger.error(e)
+                raise
 
         try:
             jdata = json.loads(resp.text.splitlines()[2])
