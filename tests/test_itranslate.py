@@ -5,7 +5,7 @@ from itranslate import itranslate
 
 def test_version():
     """Test version."""
-    assert __version__ == "0.1.1"
+    assert __version__[:3] == "0.1"
 
 
 def test_sanity():
